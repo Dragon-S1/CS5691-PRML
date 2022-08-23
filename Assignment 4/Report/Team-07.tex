@@ -1,0 +1,345 @@
+\documentclass[10pt]{article}
+\usepackage{times}
+\usepackage{float}
+\pagestyle{empty}
+\parindent 0px
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ top=0mm,
+ margin=4mm,
+}
+ 
+\title{CS5691: Assignment 4}
+\author{Akshat Meena (CS19B052), Shubham Patel (ME19B170)}
+\date{}
+\usepackage{graphicx}
+\graphicspath{ {../Plots/ANN} {../Plots/LR} {../Plots/KNN} {../Plots/SVM} {../Plots/ROC}}
+
+\begin{document}
+\maketitle
+\begin{center}
+\begin{Large}
+A. Synthetic Dataset
+\end{Large}
+\end{center}
+
+\begin{enumerate}
+	\item \textbf{Confusion Matrix}
+	\begin{itemize}
+		\item We get 100\% accuracy for KNN and ANN(using 500+ nodes in 2 hidden layer), we get least accuracy for LR.
+	\end{itemize}
+	\begin{figure}[H]
+		\caption{
+		\begin{small}
+		Confusion Matrix for Classification of synthetic data using KNN(k=10), Logistic Regression, SVM, ANN respectively
+		\end{small}
+		}
+		\centering
+		\includegraphics[scale=0.4]{KNN_CM_SD10}
+		\includegraphics[scale=0.4]{LR_CM_SD}
+		\includegraphics[scale=0.4]{SVM_CM_SD}
+		\includegraphics[scale=0.4]{ANN_CM_SD}
+	\end{figure}
+	\item \textbf{PCA}
+	\begin{itemize}
+		\item After PCA the accuracy is reduced to around 90-91\% for all classifications.
+	\end{itemize}
+	\begin{figure}[H]
+		\caption{
+		\begin{small}
+		Confusion Matrix for Classification of synthetic data using KNN(k=10), Logistic Regression, SVM, ANN respectively after reducing features to 1 using PCA
+		\end{small}
+		}
+		\centering
+		\includegraphics[scale=0.4]{KNN_PCA_SD10}
+		\includegraphics[scale=0.4]{LR_PCA_SD}
+		\includegraphics[scale=0.4]{SVM_PCA_SD}
+		\includegraphics[scale=0.4]{ANN_PCA_SD}
+	\end{figure}
+	\item \textbf{LDA}
+	\begin{itemize}
+		\item We can observe that LDA is slightly better in some classification than the PCA for the same number of reduced dimensions
+	\end{itemize}
+	\begin{figure}[H]
+		\caption{
+		\begin{small}
+		Confusion Matrix for Classification of synthetic data using KNN(k=10), Logistic Regression, SVM, ANN respectively after reducing features to 1 using LDA
+		\end{small}
+		}
+		\centering
+		\includegraphics[scale=0.4]{KNN_LDA_SD10}
+		\includegraphics[scale=0.4]{LR_LDA_SD}
+		\includegraphics[scale=0.4]{SVM_LDA_SD}
+		\includegraphics[scale=0.4]{ANN_LDA_SD}
+	\end{figure}
+	\item \textbf{ROC}
+	\begin{figure}[H]
+		\caption{
+		\begin{small}
+		ROC curve for Classification of synthetic data using KNN(k=10), Logistic Regression, SVM, ANN respectively and comparing each classification.
+		\end{small}
+		}
+		\centering
+		\includegraphics[scale=0.4]{KNN_ROC_SD}
+		\includegraphics[scale=0.4]{LR_ROC_SD}
+		\includegraphics[scale=0.4]{SVM_ROC_SD}
+		\includegraphics[scale=0.4]{ANN_ROC_SD}
+		\includegraphics[scale=0.25]{ROC_SD}
+	\end{figure}
+	\item \textbf{DET}
+	\begin{figure}[H]
+		\caption{
+		\begin{small}
+		DET curve for Classification of synthetic data using KNN(k=10), Logistic Regression, SVM, ANN respectively 
+		\end{small}
+		}
+		\centering
+		\includegraphics[scale=0.35]{KNN_DET_SD}
+		\includegraphics[scale=0.35]{LR_DET_SD}
+		\includegraphics[scale=0.35]{SVM_DET_SD}
+		\includegraphics[scale=0.35]{ANN_DET_SD}
+	\end{figure}
+\end{enumerate}
+
+\begin{center}
+\begin{Large}
+B. Image Dataset
+\end{Large}
+\end{center}
+
+\begin{enumerate}
+	\item \textbf{Confusion Matrix}
+	\begin{itemize}
+		\item Accuracy for each model LR$>$KNN$>$SVM$>$ANN
+	\end{itemize}
+	\begin{figure}[H]
+		\caption{
+		\begin{small}
+		Confusion Matrix for Classification of image data using KNN(k=10), Logistic Regression, SVM, ANN respectively
+		\end{small}
+		}
+		\centering
+		\includegraphics[scale=0.4]{KNN_CM_ID10}
+		\includegraphics[scale=0.4]{LR_CM_ID}
+		\includegraphics[scale=0.4]{SVM_CM_ID}
+		\includegraphics[scale=0.4]{ANN_CM_ID}
+	\end{figure}
+	\item \textbf{PCA}
+	\begin{itemize}
+		\item Even after reducing that dimension from 828 to 25 using PCA we can see that large percentage of data is preserved and we get pretty good accuracy.
+	\end{itemize}
+	\begin{figure}[H]
+		\caption{
+		\begin{small}
+		Confusion Matrix for Classification of image data using KNN(k=10), Logistic Regression, SVM, ANN respectively after reducing features to 25 using PCA
+		\end{small}
+		}
+		\centering
+		\includegraphics[scale=0.4]{KNN_PCA25_ID10}
+		\includegraphics[scale=0.4]{LR_PCA25_ID}
+		\includegraphics[scale=0.4]{SVM_PCA25_ID}
+		\includegraphics[scale=0.4]{ANN_PCA25_ID}
+	\end{figure}
+	\item \textbf{LDA}
+	\begin{itemize}
+		\item We see that LDA is poorer than PCA for same number of components on image data. Also we observed that there is not much change in the accuracy for taking some more number of components than 25 too.
+	\end{itemize}
+	\begin{figure}[H]
+		\caption{
+		\begin{small}
+		Confusion Matrix for Classification of image data using KNN(k=10), Logistic Regression, SVM, ANN respectively after reducing features to 25 using LDA
+		\end{small}
+		}
+		\centering
+		\includegraphics[scale=0.4]{KNN_LDA25_ID10}
+		\includegraphics[scale=0.4]{LR_LDA25_ID}
+		\includegraphics[scale=0.4]{SVM_LDA25_ID}
+		\includegraphics[scale=0.4]{ANN_LDA25_ID}
+	\end{figure}
+	\item \textbf{ROC}
+	\begin{figure}[H]
+		\caption{
+		\begin{small}
+		ROC curve for Classification of image data using KNN(k=10), Logistic Regression, SVM, ANN respectively and comparing each classification.
+		\end{small}
+		}
+		\centering
+		\includegraphics[scale=0.4]{KNN_ROC_ID}
+		\includegraphics[scale=0.4]{LR_ROC_ID}
+		\includegraphics[scale=0.4]{SVM_ROC_ID}
+		\includegraphics[scale=0.4]{ANN_ROC_ID}
+		\includegraphics[scale=0.25]{ROC_ID}
+	\end{figure}
+	\item \textbf{DET}
+	\begin{figure}[H]
+		\caption{
+		\begin{small}
+		DET curve for Classification of image data using KNN(k=10), Logistic Regression, SVM, ANN respectively 
+		\end{small}
+		}
+		\centering
+		\includegraphics[scale=0.35]{KNN_DET_ID}
+		\includegraphics[scale=0.35]{LR_DET_ID}
+		\includegraphics[scale=0.35]{SVM_DET_ID}
+		\includegraphics[scale=0.35]{ANN_DET_ID}
+	\end{figure}
+\end{enumerate}
+
+\begin{center}
+\begin{Large}
+C. Spoken Digit
+\end{Large}
+\end{center}
+
+\begin{enumerate}
+	\item \textbf{Confusion Matrix}
+	\begin{itemize}
+		\item On spoken digit data all classifier except LR give good accuracy
+	\end{itemize}
+	\begin{figure}[H]
+		\caption{
+		\begin{small}
+		Confusion Matrix for Classification of spoken digit data using KNN(k=10), Logistic Regression, SVM, ANN respectively
+		\end{small}
+		}
+		\centering
+		\includegraphics[scale=0.4]{KNN_CM_D10}
+		\includegraphics[scale=0.4]{LR_CM_D}
+		\includegraphics[scale=0.4]{SVM_CM_D}
+		\includegraphics[scale=0.4]{ANN_CM_D}
+	\end{figure}
+	\item \textbf{PCA}
+	\begin{itemize}
+		\item After reducing dimensions to 15 we observe that we still get good accuracy for KNN whereas for SVM and ANN it reduces significantly relatively.
+	\end{itemize}
+	\begin{figure}[H]
+		\caption{
+		\begin{small}
+		Confusion Matrix for Classification of spoken digit data using KNN(k=10), Logistic Regression, SVM, ANN respectively after reducing features to 15 using PCA
+		\end{small}
+		}
+		\centering
+		\includegraphics[scale=0.4]{KNN_PCA15_D10}
+		\includegraphics[scale=0.4]{LR_PCA15_D}
+		\includegraphics[scale=0.4]{SVM_PCA15_D}
+		\includegraphics[scale=0.4]{ANN_PCA15_D}
+	\end{figure}
+	\item \textbf{LDA}
+	\begin{itemize}
+		\item Comparative to PCA we get poorer accuracy using LDA
+	\end{itemize}
+	\begin{figure}[H]
+		\caption{
+		\begin{small}
+		Confusion Matrix for Classification of spoken digit data using KNN(k=10), Logistic Regression, SVM, ANN respectively after reducing features to 15 using PCA
+		\end{small}
+		}
+		\centering
+		\includegraphics[scale=0.4]{KNN_LDA15_D10}
+		\includegraphics[scale=0.4]{LR_LDA15_D}
+		\includegraphics[scale=0.4]{SVM_LDA15_D}
+		\includegraphics[scale=0.4]{ANN_LDA15_D}
+	\end{figure}
+	\item \textbf{ROC}
+	\begin{figure}[H]
+		\caption{
+		\begin{small}
+		ROC curve for Classification of spoken digit data using KNN(k=10) SVM, ANN respectively and comparing each classification.
+		\end{small}
+		}
+		\centering
+		\includegraphics[scale=0.4]{KNN_ROC_D}
+		\includegraphics[scale=0.4]{SVM_ROC_D}
+		\includegraphics[scale=0.4]{ANN_ROC_D}
+		\includegraphics[scale=0.25]{ROC_D}
+	\end{figure}
+	\item \textbf{DET}
+	\begin{figure}[H]
+		\caption{
+		\begin{small}
+		DET curve for Classification of spoken digit data using SVM, ANN respectively 
+		\end{small}
+		}
+		\centering
+		\includegraphics[scale=0.4]{SVM_DET_D}
+		\includegraphics[scale=0.4]{ANN_DET_D}
+	\end{figure}
+\end{enumerate}
+
+\begin{center}
+\begin{Large}
+D. Online Handwritting
+\end{Large}
+\end{center}
+
+\begin{enumerate}
+	\item \textbf{Confusion Matrix}
+	\begin{figure}[H]
+		\caption{
+		\begin{small}
+		Confusion Matrix for Classification of online handwritting data using KNN(k=10), Logistic Regression, SVM, ANN respectively
+		\end{small}
+		}
+		\centering
+		\includegraphics[scale=0.4]{KNN_CM_H10}
+		\includegraphics[scale=0.25]{LR_CM_H}
+		\includegraphics[scale=0.4]{SVM_CM_H}
+		\includegraphics[scale=0.4]{ANN_CM_H}
+	\end{figure}
+	\item \textbf{PCA}
+	\begin{figure}[H]
+		\caption{
+		\begin{small}
+		Confusion Matrix for Classification of online handwritting data using KNN(k=10), Logistic Regression, SVM, ANN respectively after reducing features to 1 using PCA
+		\end{small}
+		}
+		\centering
+		\includegraphics[scale=0.4]{KNN_PCA_H10}
+		\includegraphics[scale=0.25]{LR_PCA_H}
+		\includegraphics[scale=0.4]{SVM_PCA_H}
+		\includegraphics[scale=0.4]{ANN_PCA_H}
+	\end{figure}
+	\item \textbf{LDA}
+	\begin{figure}[H]
+		\caption{
+		\begin{small}
+		Confusion Matrix for Classification of online handwritting data using KNN(k=10), Logistic Regression, SVM, ANN respectively after reducing features to 1 using PCA
+		\end{small}
+		}
+		\centering
+		\includegraphics[scale=0.4]{KNN_LDA_H10}
+		\includegraphics[scale=0.25]{LR_LDA_H}
+		\includegraphics[scale=0.4]{SVM_LDA_H}
+		\includegraphics[scale=0.4]{ANN_LDA_H}
+	\end{figure}
+	\item \textbf{ROC}
+	\begin{figure}[H]
+		\caption{
+		\begin{small}
+		ROC curve for Classification of online handwritting data using KNN(k=10), Logistic Regression, SVM, ANN respectively and comparing each classification. 
+		\end{small}
+		}
+		\centering
+		\includegraphics[scale=0.4]{KNN_ROC_H}
+		\includegraphics[scale=0.25]{LR_ROC_H}
+		\includegraphics[scale=0.4]{SVM_ROC_H}
+		\includegraphics[scale=0.4]{ANN_ROC_H}
+		\includegraphics[scale=0.25]{ROC_H}
+	\end{figure}
+	\item \textbf{DET}
+	\begin{figure}[H]
+		\caption{
+		\begin{small}
+		DET curve for Classification of online handwritting data using SVM, ANN respectively
+		\end{small}
+		}
+		\centering
+		\includegraphics[scale=0.4]{SVM_DET_H}
+		\includegraphics[scale=0.4]{ANN_DET_H}
+	\end{figure}
+\end{enumerate}
+
+\end{document}
